@@ -1,0 +1,6 @@
+.vs
+.vscode
+.fake
+.ionide
+/**/bin
+/**/obj

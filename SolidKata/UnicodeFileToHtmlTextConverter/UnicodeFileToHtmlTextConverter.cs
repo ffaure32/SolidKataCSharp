@@ -7,12 +7,19 @@ namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
     {
         private string _fullFilenameWithPath;
 
+        private TextReader _textReader;
 
         public UnicodeFileToHtmlTextConverter(string fullFilenameWithPath)
         {
             _fullFilenameWithPath = fullFilenameWithPath;
+            _textReader = File.OpenText(_fullFilenameWithPath);
         }
 
+        public UnicodeFileToHtmlTextConverter(TextReader textReader)
+        {
+            _fullFilenameWithPath = string.Empty;
+            _textReader = textReader;
+        }
         public string GetFilename()
         {
             return _fullFilenameWithPath;
@@ -20,7 +27,7 @@ namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
 
         public string ConvertToHtml()
         {
-            using (TextReader unicodeFileStream = File.OpenText(_fullFilenameWithPath))
+            using (TextReader unicodeFileStream = _textReader)
             {
                 string html = string.Empty;
 

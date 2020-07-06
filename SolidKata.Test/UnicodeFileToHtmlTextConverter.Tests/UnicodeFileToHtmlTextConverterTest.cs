@@ -1,4 +1,5 @@
 
+using System.IO;
 using Xunit;
 namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
 {
@@ -7,8 +8,9 @@ namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
         [Fact]
         public void foobar()
         {
-            UnicodeFileToHtmlTextConverter converter = new UnicodeFileToHtmlTextConverter("foobar.txt");
-            Assert.Equal("foobar.txt", converter.GetFilename());
+            TextReader tr = new StringReader("toto");
+            UnicodeFileToHtmlTextConverter converter = new UnicodeFileToHtmlTextConverter(tr);
+            Assert.Equal("toto<br />", converter.ConvertToHtml());
         }
     }
 }
